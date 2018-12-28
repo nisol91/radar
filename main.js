@@ -21,6 +21,12 @@ var aerei = [
     long:20,
     fuel:50,
     'km/kg':1,
+  },
+  {
+    lat:41,
+    long:15,
+    fuel:50,
+    'km/kg':1,
   }
 ]
 var aeroporti = [
@@ -49,6 +55,7 @@ function measure(lat1, lon1, lat2, lon2){ //haversine formula
 
 
   for (var i = 0; i < aerei.length; i++) {
+    console.log('AEREO ' + (i + 1));
     //estraggo dal mio db i vari valori e li metto dentro a delle variabili
     var lat_aer = aerei[i].lat
     var long_aer = aerei[i].long
@@ -56,14 +63,16 @@ function measure(lat1, lon1, lat2, lon2){ //haversine formula
     // console.log(long_aer);
     var carb = aerei[i].fuel
     var efficienza = aerei[i]['km/kg']
-    console.log('carburante =' + carb);
-    console.log('efficienza =' + efficienza);
+    console.log('carburante = ' + carb + ' kg');
+    console.log('efficienza = ' + efficienza + ' km/kg');
     var autonomia = carb*efficienza
-    console.log('autonomia =' + autonomia);
+    console.log('autonomia = ' + autonomia + ' km');
 
 
 
     for (var j = 0; j < aeroporti.length; j++) {
+      console.log('aeroporto ' + (j + 1));
+
       //estraggo dal mio db i vari valori e li metto dentro a delle variabili
 
       var lat_airport = aeroporti[j].lat
@@ -76,7 +85,7 @@ function measure(lat1, lon1, lat2, lon2){ //haversine formula
       //le distanze di due posizioni di latitudine nota in km.
 
       var dist = measure(lat_aer, long_aer, lat_airport, long_airport)
-      console.log('distanza =' + dist);
+      console.log('distanza = ' + dist + ' km');
 
 
       //prima avevo utilizzato la formula di distanza fra due punti, ma non avrei saputo come convertire le
@@ -84,7 +93,7 @@ function measure(lat1, lon1, lat2, lon2){ //haversine formula
 
       // var dist = Math.sqrt(Math.abs(Math.pow((lat_airport - lat_aer), 2)) + Math.abs(Math.pow((long_airport - long_aer), 2)))
 
-
+      //controllo se l autonomia e' sufficiente
       if (dist > autonomia) {
         console.log('pericolo');
       } else {
