@@ -17,22 +17,25 @@ var aerei = [
     'km/kg':5,
   },
   {
-    lat:66.0,
-    long:20,
+    //milano
+    lat:45.4,
+    long:9.1,
     fuel:50,
     'km/kg':1,
   },
   {
-    lat:41,
-    long:15,
+    //bologna
+    lat:44.5,
+    long:11.3,
     fuel:50,
     'km/kg':1,
   }
 ]
 var aeroporti = [
   {
-    lat:40,
-    long:10,
+    //parma
+    lat:44.8,
+    long:10.33,
   },
   {
     lat:50,
@@ -93,7 +96,9 @@ function measure(lat1, lon1, lat2, lon2){ //haversine formula
 
       // var dist = Math.sqrt(Math.abs(Math.pow((lat_airport - lat_aer), 2)) + Math.abs(Math.pow((long_airport - long_aer), 2)))
 
-      //controllo se l autonomia e' sufficiente
+
+      //-------------------
+      //infine controllo se l autonomia e' sufficiente
       if (dist > autonomia) {
         console.log('pericolo');
       } else {
